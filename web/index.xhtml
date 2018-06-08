@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <title>Fitnet</title>
+    <link rel="icon" href="#{facesContext.externalContext.requestContextPath}/img/icon.png"></link>
+
+    <!-- Bootstrap core CSS -->
+    <link href="#{facesContext.externalContext.requestContextPath}/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Animation CSS -->
+    <link href="#{facesContext.externalContext.requestContextPath}/css/animate.css" rel="stylesheet"/>
+    <link href="#{facesContext.externalContext.requestContextPath}/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+
+    <!-- Custom styles for this template -->
+    <link href="#{facesContext.externalContext.requestContextPath}/css/style.css" rel="stylesheet"/>
+    <style>
+        .logoIndex{
+            position: absolute;top: 50%;transform: translate(-50%,-50%);left: 90px;
+        }
+        @media (max-width: 768px){
+            .logoIndex{
+                top: 25px;
+            }
+        }
+
+    </style>
+</h:head>
+<h:body id="page-top" class="landing-page">
+<div class="navbar-wrapper">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container" style="position: relative;">
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="logoIndex">
+                        <img src="#{facesContext.externalContext.requestContextPath}/img/logo.png"  height="50"/>
+                    </div>
+                    
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="page-scroll" href="#page-top">Inicio</a></li>
+                        <li><a class="page-scroll" href="#features">Funcionalidades</a></li>
+                        <li><a class="page-scroll" href="#team">Equipo</a></li>
+                        <li><a class="page-scroll" href="#pricing">Precio</a></li>
+                        <li><a class="page-scroll" href="#contact">Contacto</a></li>
+                        <li><a class="page-scroll" href="#{facesContext.externalContext.requestContextPath}/login">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+</div>
+<div id="inSlider" class="carousel carousel-fade" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#inSlider" data-slide-to="0" class="active"></li>
+        <li data-target="#inSlider" data-slide-to="1"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Ofrecemos<br/>
+                        una interfaz amigable,<br/>
+                        intuitiva,<br/>
+                        performante.</h1>
+                    <p>Para que cualquier usuario sin experiencia pueda usarla.</p>
+                    <p>
+                        <a class="btn btn-lg btn-primary" href="#" role="button">VER MANUAL</a>
+<!--                        <a class="caption-link" href="#" role="button">Para mas informacion</a>-->
+                    </p>
+                </div>
+                <div class="carousel-image wow zoomIn">
+                    <img src="img/landing/laptop.png" alt="laptop"/>
+                </div>
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back one"></div>
+
+        </div>
+        <div class="item">
+            <div class="container">
+                <div class="carousel-caption blank">
+                    <h1>Tambien incorporamos<br/> una version mobile.</h1>
+                    <p>Para poder acceder desde cualquier dispositivo movil.</p>
+                    <p><a class="btn btn-lg btn-primary" href="#" role="button">VER MANUAL</a></p>
+                </div>
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back two"></div>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#inSlider" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#inSlider" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+
+<section id="features" class="container services">
+    <div class="row">
+        <div class="col-sm-3">
+            <h2>Adaptable</h2>
+            <p>La pagina cuenta con una vista Full Responsive la cual le permite adaptarse a cualquier dispositivo desde Smart TVs  hasta cualquier modelo de celular.</p>
+            <!--<p><a class="navy-link" href="#" role="button">Details </a></p>-->
+        </div>
+        <div class="col-sm-3">
+            <h2>Protegemos sus Datos</h2>
+            <p>Entendemos la importancia de sus datos, por lo cual la aplicacion web cuenta con un respaldo diario de la base de datos para proteger los mismos ante cualquier desperfecto o ataque.</p>
+            <!--<p><a class="navy-link" href="#" role="button">Details </a></p>-->
+        </div>
+        <div class="col-sm-3">
+            <h2>Servicio en la nube</h2>
+            <p>Para evitar la instalacion de software y equipos en sus gimnasios, ofrecemos el servicio en la nube el cual podra ser accedido desde cualquier dispositivo.</p>
+            <!--<p><a class="navy-link" href="#" role="button">Details </a></p>-->
+        </div>
+        <div class="col-sm-3">
+            <h2>Soporte</h2>
+            <p>Contamos con una linea de soporte al usuario la cual esta disponible las 24 hs del dia los 7 dias de la semana, .</p>
+            <!--<p><a class="navy-link" href="#" role="button">Details </a></p>-->
+        </div>
+    </div>
+</section>
+
+<section  class="container features">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <div class="navy-line"></div>
+            <h1>Mas de 15+ Funcionalidades<br/> <span class="navy"> para gestionar su gimnasio.</span> </h1>
+            <p>Entre las cuales se incluyen. </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 text-center wow fadeInLeft">
+            <div>
+                <i class="fa fa-sign-in features-icon"></i>
+                <h2>Accesos</h2>
+                <p>Gestione el acceso de sus clientes desde una terminal mediante el uso de contraseña permitiendo o no la entrada al gimnasio.</p>
+            </div>
+            <div class="m-t-lg">
+                <i class="fa fa-bar-chart features-icon"></i>
+                <h2>Estadisticas</h2>
+                <p>LLeve el control de su flujo de dinero asi como de sus clientes y comparelos con meses o años anteriores.</p>
+            </div>
+        </div>
+        <div class="col-md-6 text-center  wow zoomIn">
+            <img src="img/landing/perspectiveCharts.png" alt="dashboard" class="img-responsive"/>
+        </div>
+        <div class="col-md-3 text-center wow fadeInRight">
+            <div>
+                <i class="fa fa-user features-icon"></i>
+                <h2>Usuarios</h2>
+                <p>Registre una cantidad ilimitada de usuarios capaces de administrar su gimnasio, mediante el uso de permisos estos tendran acceso restringido a ciertas funcionalidades.</p>
+            </div>
+            <div class="m-t-lg">
+                <i class="fa fa-print features-icon"></i>
+                <h2>Reportes</h2>
+                <p>Genere reportes en tiempo real de cobros, deudas y cualquier clase de movimiento de dinero realizado en un lapso de tiempo especifico.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <div class="navy-line"></div>
+            <h1>Proyeccion a futuro</h1>
+            <p>Para los siguientes meses se espera seguir avanzando en el desarrollo de la pagina. </p>
+        </div>
+    </div>
+    <div class="row features-block">
+        <div class="col-lg-6 features-text wow fadeInLeft">
+            <small>VISION</small>
+            <h2>Feedback</h2>
+            <p>Mediante sugerencias de nuestros clientes iremos desarrollando nuevas funcionalidades. El aporte de cada uno es insertado en una lista la cual sera organizada por prioridades a desarrollar. En el momento de finalizado el desarrollo se emitira un mail a los respoectivos clientes informando que la nueva funcionalidad esta en produccion junto con un manual para su uso.</p>
+            <a href="" class="btn btn-primary">Sugerir</a>
+        </div>
+        <div class="col-lg-6 text-right wow fadeInRight">
+            <img src="img/landing/cobro.jpg" alt="dashboard" class="img-responsive pull-right"/>
+        </div>
+    </div>
+</section>
+
+<section id="team" class="gray-section team">
+    <div class="container">
+        <div class="row m-b-lg">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>Nuestro Equipo</h1>
+                <p>En colaboracion con el gimnasio Urbanmood surgio la idea de poner en marcha esta aplicacion.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 wow fadeInLeft">
+                <div class="team-member">
+                    <img src="img/ignaciosilva.jpg" class="img-responsive img-circle img-small" alt=""/>
+                    <h4><span class="navy">Ignacio</span> Silva</h4>
+                    <p>Tecnologo en Informatica, responsable a cargo del desarollo web, diseño de la pagina e implementacion de las funcionalidades. </p>
+                    <ul class="list-inline social-icon">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="team-member wow zoomIn">
+                    <img src="img/fing.png" class="img-responsive img-circle" alt=""/>
+                    <h4><span class="navy">Tecnologo</span> Informatica</h4>
+                    <p>Alumnos del ultimo año de la carrera de Tecnologo en Informatica de la Facultad de Ingenieria en convenio con UTU se encuentran actualmente desarrollando la version mobile de la aplicacion.</p>
+                    <ul class="list-inline social-icon">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4 wow fadeInRight">
+                <div class="team-member">
+                    <img src="img/urbanmood_black.png" class="img-responsive img-circle img-small" alt=""/>
+                    <h4><span class="navy">Urban</span> Mood</h4>
+                    <p>Urbanmood es un gimnasio ubicado en Montevideo, Uruguay. Dirigido por Yessica Antuoni y Sofia Leone que en colaboracion con Bodytone se encargan de importar y distribuir aparatos de musculacion.</p>
+                    <ul class="list-inline social-icon">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg m-b-lg">
+                <p>Si usted se siente capaz de aprotar a Fitnet y quiere formar parte del equipo no dude en contactarnos y adjuntar su curriculum que nosotros lo llamaremos.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>Proximamente version mobile</h1>
+                <p>La version mobile estara disponible para android en su version 4.4.2 Kitkat en adelante. </p>
+            </div>
+        </div>
+        <div class="row features-block">
+            <div class="col-lg-3 features-text wow fadeInLeft">
+                <small>HOY</small>
+                <h2>Full Responsive </h2>
+                <p>Al dia de hoy la web cuenta con una interfaz grafica full responsive. La cual le permite adaptarse a los distintos dispositivos. Sin embargo sus funcionalidades estan limitadas por el navegador del dispositivo</p>
+                <a href="" class="btn btn-primary">Learn more</a>
+            </div>
+            <div class="col-lg-6 text-right m-t-n-lg wow zoomIn">
+                <img src="img/landing/app.png" style="height: 400px; margin: 0 auto;" class="img-responsive" alt="dashboard"/>
+            </div>
+            <div class="col-lg-3 features-text text-right wow fadeInRight">
+                <small>MAÑANA</small>
+                <h2>Aplicacion Android</h2>
+                <p>El objetivo es lograr en una primera instancia una aplicacion movil para Android (En su version 4.4.2 Kitkat o superior) con el fin de poder utilizar todas las funcionalidades que los celulares nos brindan para ofrecer mejores servicios al usuario final.</p>
+                <a href="" class="btn btn-primary">Learn more</a>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="timeline gray-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>Nuestro Flujo de Trabajo</h1>
+                <p>Como ponerse en contacto con nosotros y adquirir la membresia para utilizar nuestros servicios. </p>
+            </div>
+        </div>
+        <div class="row features-block">
+
+            <div class="col-lg-12">
+                <div id="vertical-timeline" class="vertical-container light-timeline center-orientation">
+                    <div class="vertical-timeline-block">
+                        <div class="vertical-timeline-icon navy-bg">
+                            <i class="fa fa-briefcase"></i>
+                        </div>
+
+                        <div class="vertical-timeline-content">
+                            <h2>Contacto</h2>
+                            <p>Al final de la pagina encontrara un formulario de contacto, adjunte sus datos y nosotros lo llamaremos con el fin de agendar una reunion.
+                            </p>
+                            <a href="#" class="btn btn-xs btn-primary"> Contacto</a>
+                            <span class="vertical-date"> Hoy <br/> <small>Solicitar Producto</small> </span>
+                        </div>
+                    </div>
+
+                    <div class="vertical-timeline-block">
+                        <div class="vertical-timeline-icon navy-bg">
+                            <i class="fa fa-file-text"></i>
+                        </div>
+
+                        <div class="vertical-timeline-content">
+                            <h2>Terminos y Condiciones</h2>
+                            <p>En esta etapa le definiremos en detalle las funcionalidades con las que cuenta el servicio y usted escogera su plan a la hora de firmar el contrato.</p>
+                            <a href="#" class="btn btn-xs btn-primary"> Ver planes</a>
+                            <span class="vertical-date"> Reunion <br/> <small>Fecha definida</small> </span>
+                        </div>
+                    </div>
+
+                    <div class="vertical-timeline-block">
+                        <div class="vertical-timeline-icon navy-bg">
+                            <i class="fa fa-cogs"></i>
+                        </div>
+
+                        <div class="vertical-timeline-content">
+                            <h2>Prueba Gratis</h2>
+                            <p>Una vez concretada la reunion se le otorgara un mes de prueba gratis sin compromiso de compra. </p>
+                            <a href="#" class="btn btn-xs btn-primary"> Solicitar</a>
+                            <span class="vertical-date"> Produccion <br/> <small>Contrato Aceptado</small> </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<section class="features">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>Proximas funcionalidades a desarrollar</h1>
+                <p>Entre todas las funcionalidades sugeridas por los usuarios estas son las mas destacadas. </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-5 col-lg-offset-1 features-text">
+                <small>NUEVO</small>
+                <h2>Mas Estadisticas </h2>
+                <i class="fa fa-bar-chart big-icon pull-right"></i>
+                <p>Se agregaran mas estadisticas para evaluar distinta informacion. Tambien se podran realizar graficas comparando 2 resultados en una misma consulta.</p>
+            </div>
+            <div class="col-lg-5 features-text">
+                <small>MEJORA</small>
+                <h2>Performance </h2>
+                <i class="fa fa-bolt big-icon pull-right"></i>
+                <p>Mediante un mejor manejo de indices se lograra una optimizacion de las consultas a la base de datos lo cual agilizara en gran medida la recoleccion de grandes cantidades de informacion.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-5 col-lg-offset-1 features-text">
+                <small>NUEVO</small>
+                <h2>Registro de Acciones </h2>
+                <i class="fa fa-clock-o big-icon pull-right"></i>
+                <p>Se mantendra un registro de cada cambio ralizado en la pagina, dicho registro incluira, fecha y hora del cambio y usuario responsable. Con el fin de identificar y diferenciar </p>
+            </div>
+            <div class="col-lg-5 features-text">
+                <small>NUEVO</small>
+                <h2>Acceso a Socios </h2>
+                <i class="fa fa-users big-icon pull-right"></i>
+                <p>Integrando el sistema de socios con las funcionalidades que nos provee Facebook, se implementara un login para que los socios puedan consultar sus datos en tiempo real.</p>
+            </div>
+        </div>
+    </div>
+
+</section>
+<section id="pricing" class="pricing">
+    <div class="container">
+        <div class="row m-b-lg">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>Planes</h1>
+                <p>Precio de la cuota mensual segun el plan solicitado.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 wow zoomIn">
+                <ul class="pricing-plan list-unstyled">
+                    <li class="pricing-title">
+                        Basico
+                    </li>
+                    <li class="pricing-desc">
+                        Pensado para pequeños gimnasios.
+                    </li>
+                    <li class="pricing-price">
+                        <span>$16</span> / mes
+                    </li>
+                    <li>
+                        Prueba Gratuita
+                    </li>
+                    <li>
+                        Socios: 100
+                    </li>
+                    <li>
+                        Usuarios: 1
+                    </li>
+                    <li>
+                        Soporte
+                    </li>
+                    <li>
+                        <a class="btn btn-primary btn-xs" href="#">Solicitar</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-lg-4 wow zoomIn">
+                <ul class="pricing-plan list-unstyled selected">
+                    <li class="pricing-title">
+                        Premium
+                    </li>
+                    <li class="pricing-desc">
+                        Pensado para gimnasios con muchas sucursales.
+                    </li>
+                    <li class="pricing-price">
+                        <span>$38</span> / month
+                    </li>
+                    <li>
+                        Prueba Gratuita
+                    </li>
+                    <li>
+                        Socios: Ilimitado
+                    </li>
+                    <li>
+                        Usuarios: Ilimitado
+                    </li>
+                    <li>
+                        Soporte
+                    </li>
+                    <li>
+                        <strong>Support platform</strong>
+                    </li>
+                    <li class="plan-action">
+                        <a class="btn btn-primary btn-xs" href="#">Solicitar</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-lg-4 wow zoomIn">
+                <ul class="pricing-plan list-unstyled">
+                    <li class="pricing-title">
+                        Estandar
+                    </li>
+                    <li class="pricing-desc">
+                        Pensado para gimnasios en crecimiento.
+                    </li>
+                    <li class="pricing-price">
+                        <span>$22</span> / mes
+                    </li>
+                    <li>
+                        Prueba Gratuita
+                    </li>
+                    <li>
+                        Socios: 500
+                    </li>
+                    <li>
+                        Usuarios: 3
+                    </li>
+                    <li>
+                        Soporte
+                    </li>
+                    <li>
+                        <a class="btn btn-primary btn-xs" href="#">Solicitar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row m-t-lg">
+            <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg">
+                <p>*La aplicacion web tanto como la aplicacion moblie se encuentran en una fase <span class="navy">Beta</span>  por lo cual tanto su desarollo como testeo de fucnionalidades no ah sido completado.*</p>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section id="contact" class="gray-section contact">
+    <div class="container">
+        <div class="row m-b-lg">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>Contacto</h1>
+                <p>Si quieres solicitar el servicio, aportar una idea o unirte al equipo no dudes en contactarnos.</p>
+            </div>
+        </div>
+        <div class="row m-b-lg">
+            <div class="col-lg-3 col-lg-offset-3">
+                <address>
+                    <strong><span class="navy">Fitnet Company, Inc.</span></strong><br/>
+                    Dr. Joaquin Requena 1382, Apto. 9<br/>
+                    Montevide, Uruguay<br/>
+                    <abbr title="Telefono">Cel:</abbr> (+598) 98 591 898
+                </address>
+            </div>
+            <div class="col-lg-4">
+                <p class="text-color">
+                    Tambien ofrecemos el desarrollo web a medida, por lo cual si deseas el desarrollo de un web con el fin de obtener una pagina publicitaria o para brindar informacion a sus clientes, no dude en contactarnos.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <a href="mailto:igmasiri@gmail.com" class="btn btn-primary">Enviar Mail</a>
+                <p class="m-t-sm">
+                    Siguenos en nuestras redes sociales
+                </p>
+                <ul class="list-inline social-icon">
+                    <li><a href="#"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg m-b-lg">
+                <p><strong> 2017 Fitnet</strong><br/> © Copyright 2017 Ignacio Silva. - Todos Los Derechos Reservados.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mainly scripts -->
+<script src="#{facesContext.externalContext.requestContextPath}/js/jquery-2.1.1.js"></script>
+<script src="#{facesContext.externalContext.requestContextPath}/js/bootstrap.min.js"></script>
+<script src="#{facesContext.externalContext.requestContextPath}/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="#{facesContext.externalContext.requestContextPath}/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="#{facesContext.externalContext.requestContextPath}/js/inspinia.js"></script>
+<script src="#{facesContext.externalContext.requestContextPath}/js/plugins/pace/pace.min.js"></script>
+<script src="#{facesContext.externalContext.requestContextPath}/js/plugins/wow/wow.min.js"></script>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        $('body').scrollspy({
+            target: '.navbar-fixed-top',
+            offset: 80
+        });
+
+        // Page scrolling feature
+        $('a.page-scroll').bind('click', function(event) {
+            var link = $(this);
+            $('html, body').stop().animate({
+                scrollTop: $(link.attr('href')).offset().top - 50
+            }, 500);
+            event.preventDefault();
+            $("#navbar").collapse('hide');
+        });
+    });
+
+    var cbpAnimatedHeader = (function() {
+        var docElem = document.documentElement,
+                header = document.querySelector( '.navbar-default' ),
+                didScroll = false,
+                changeHeaderOn = 1;
+        function init() {
+            window.addEventListener( 'scroll', function( event ) {
+                if( !didScroll ) {
+                    didScroll = true;
+                    setTimeout( scrollPage, 250 );
+                }
+            }, false );
+        }
+        function scrollPage() {
+            var sy = scrollY();
+            if ( sy >= changeHeaderOn ) {
+                $(header).addClass('navbar-scroll')
+            }
+            else {
+                $(header).removeClass('navbar-scroll')
+            }
+            didScroll = false;
+        }
+        function scrollY() {
+            return window.pageYOffset || docElem.scrollTop;
+        }
+        init();
+
+    })();
+
+    // Activate WOW.js plugin for animation on scrol
+    new WOW().init();
+
+</script>
+
+</h:body>
+</html>

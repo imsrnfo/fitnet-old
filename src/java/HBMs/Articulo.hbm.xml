@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/05/2017 09:57:26 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="HBMs.Articulo" table="articulo" catalog="fitnet" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="bitacora" class="HBMs.Bitacora" fetch="select">
+            <column name="id_bitacora" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <property name="precio" type="int">
+            <column name="precio" not-null="true" />
+        </property>
+        <set name="cobroArticulos" table="cobro_articulo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_articulo" />
+            </key>
+            <one-to-many class="HBMs.CobroArticulo" />
+        </set>
+    </class>
+</hibernate-mapping>

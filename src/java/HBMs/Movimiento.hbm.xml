@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/02/2017 08:16:47 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="HBMs.Movimiento" table="movimiento" catalog="fitnet" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="bitacora" class="HBMs.Bitacora" fetch="select">
+            <column name="id_bitacora" not-null="true" />
+        </many-to-one>
+        <many-to-one name="concepto" class="HBMs.Concepto" fetch="select">
+            <column name="id_concepto" not-null="true" />
+        </many-to-one>
+        <property name="tipo" type="string">
+            <column name="tipo" length="45" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="45" />
+        </property>
+        <property name="importe" type="int">
+            <column name="importe" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

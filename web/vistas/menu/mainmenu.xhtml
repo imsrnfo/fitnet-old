@@ -1,0 +1,228 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <title>Fitnet</title>
+        <link rel="icon" href="#{facesContext.externalContext.requestContextPath}/img/icon.png"></link>
+        
+        <link href="#{facesContext.externalContext.requestContextPath}/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="#{facesContext.externalContext.requestContextPath}/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+        
+        <link href="#{facesContext.externalContext.requestContextPath}/css/animate.css" rel="stylesheet"/>
+        <link href="#{facesContext.externalContext.requestContextPath}/css/style.css" rel="stylesheet"/>
+        
+        <!-- Toastr style -->
+        <link href="#{facesContext.externalContext.requestContextPath}/css/plugins/toastr/toastr.min.css" rel="stylesheet"/>
+        
+        <link href="#{facesContext.externalContext.requestContextPath}/css/toastIconos.css" rel="stylesheet"/>
+        
+    </h:head>
+    
+    <h:body>
+        <div id="wrapper">
+            
+            <ui:include src="./MenuIzq.xhtml" />
+            
+            <div id="page-wrapper" class="gray-bg dashbard-1">
+                <div class="row border-bottom" style="padding: 10px;">    
+                    <div style="overflow: auto;">
+                        <div>
+                            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " style="margin: 0 auto" href="#"><i class="fa fa-bars"></i> </a>
+                        </div>
+                        <div style="float: right; margin: 5px;">
+                            <h:form>
+                                <p:clock pattern="dd/MM/yyyy HH:mm:ss" mode="server" />
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrapper wrapper-content">
+                    <ui:insert name="content">
+                        <div class="wrapper wrapper-content animated fadeInRight">
+                            
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-title">
+                                            <h5>Ganancia mensual
+                                            </h5>
+                                            <div class="ibox-tools">
+                                                <a class="collapse-link">
+                                                    <i class="fa fa-chevron-up"></i>
+                                                </a>
+                                                <a class="close-link">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="widget navy-bg p-lg text-center">
+                                                        <div class="m-b-md">
+                                                            <i class="fa fa-calendar fa-4x"></i>
+                                                            <h1 class="m-xs">$#{menuMainController.obtenerGananciasMesActual()}</h1>
+                                                            <h3 class="font-bold no-margins">
+                                                                Mes
+                                                            </h3>
+                                                            <small>actual</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="widget  p-lg text-center">
+                                                        <div class="m-b-md">
+                                                            <i class="fa fa-calendar fa-4x"></i>
+                                                            <h1 class="m-xs">$#{menuMainController.obtenerGananciasMesAnterior()}</h1>
+                                                            <h3 class="font-bold no-margins">
+                                                                Mes
+                                                            </h3>
+                                                            <small>anterior</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-6">
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-title">
+                                            <h5>Ganancia semanal
+                                            </h5>
+                                            <div class="ibox-tools">
+                                                <a class="collapse-link">
+                                                    <i class="fa fa-chevron-up"></i>
+                                                </a>
+                                                <a class="close-link">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="widget yellow-bg p-lg text-center">
+                                                        <div class="m-b-md">
+                                                            <i class="fa fa-calendar fa-4x"></i>
+                                                            <h1 class="m-xs">$#{menuMainController.obtenerGananciasSemanaActual()}</h1>
+                                                            <h3 class="font-bold no-margins">
+                                                                Semana
+                                                            </h3>
+                                                            <small>actual</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="widget  p-lg text-center">
+                                                        <div class="m-b-md">
+                                                            <i class="fa fa-calendar fa-4x"></i>
+                                                            <h1 class="m-xs">$#{menuMainController.obtenerGananciasSemanaAnterior()}</h1>
+                                                            <h3 class="font-bold no-margins">
+                                                                Semana
+                                                            </h3>
+                                                            <small>anterior</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-title">
+                                            <h5>Ganancias del mes actual por dias.
+                                            </h5>
+                                            <div class="ibox-tools">
+                                                <a class="collapse-link">
+                                                    <i class="fa fa-chevron-up"></i>
+                                                </a>
+                                                <a class="close-link">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <div>
+                                                <canvas id="lineChart" height="200"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ChartJS-->
+                        <script src="#{facesContext.externalContext.requestContextPath}/js/plugins/chartJs/Chart.min.js"></script>
+                        <script>
+                            var lineData = {
+                                labels: [#{menuMainController.diasCobrosMes()}],
+                                datasets: [
+                                    {
+                                        label: "Cobros",
+                                        fillColor: "rgba(26,179,148,0.5)",
+                                        strokeColor: "rgba(26,179,148,0.7)",
+                                        pointColor: "rgba(26,179,148,1)",
+                                        pointStrokeColor: "#fff",
+                                        pointHighlightFill: "#fff",
+                                        pointHighlightStroke: "rgba(26,179,148,1)",
+                                        data: [#{menuMainController.datosCobrosMes()}]
+                                    }
+                                ]
+                            };
+                            var lineOptions = {
+                                scaleShowGridLines: true,
+                                scaleGridLineColor: "rgba(0,0,0,.05)",
+                                scaleGridLineWidth: 2,
+                                bezierCurve: true,
+                                bezierCurveTension: 0.4,
+                                pointDot: true,
+                                pointDotRadius: 4,
+                                pointDotStrokeWidth: 1,
+                                pointHitDetectionRadius: 20,
+                                datasetStroke: true,
+                                datasetStrokeWidth: 2,
+                                datasetFill: true,
+                                responsive: true,
+                                maintainAspectRatio: false
+                            };
+                            var ctx = document.getElementById("lineChart").getContext("2d");
+                            var myNewChart = new Chart(ctx).Line(lineData, lineOptions);
+                        </script>
+                    </ui:insert>
+                </div>
+            </div>
+        </div>
+        
+        <!--Mainly scripts--> 
+        <h:outputScript name="js/jquery-2.1.1.js" />
+        <h:outputScript name="js/bootstrap.min.js" />
+        <h:outputScript name="js/plugins/metisMenu/jquery.metisMenu.js" />
+        <h:outputScript name="js/plugins/slimscroll/jquery.slimscroll.min.js" />
+        
+        <!--Custom and plugin javascript--> 
+        <h:outputScript name="js/inspinia.js" />
+        <h:outputScript name="js/plugins/pace/pace.min.js" />
+        
+        <!--jQuery UI--> 
+        <h:outputScript name="js/plugins/jquery-ui/jquery-ui.min.js" />
+        
+        <!-- Toastr script -->
+        <h:outputScript name="js/plugins/toastr/toastr.min.js"/>
+        
+        
+    </h:body>
+</html>
+

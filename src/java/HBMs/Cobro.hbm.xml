@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/05/2017 09:57:26 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="HBMs.Cobro" table="cobro" catalog="fitnet" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="actividad" class="HBMs.Actividad" fetch="select">
+            <column name="id_actividad" />
+        </many-to-one>
+        <many-to-one name="bitacora" class="HBMs.Bitacora" fetch="select">
+            <column name="id_bitacora" not-null="true" />
+        </many-to-one>
+        <many-to-one name="cliente" class="HBMs.Cliente" fetch="select">
+            <column name="id_cliente" not-null="true" />
+        </many-to-one>
+        <property name="fecha" type="date">
+            <column name="fecha" length="10" not-null="true">
+                <comment>fecha en la que se registra el cobro</comment>
+            </column>
+        </property>
+        <property name="importeTotal" type="int">
+            <column name="importeTotal" not-null="true">
+                <comment>suma de los precios de las actividades por cantidad de cada una menos el descuento</comment>
+            </column>
+        </property>
+        <property name="entrega" type="int">
+            <column name="entrega" not-null="true">
+                <comment>cantidad de dinero que entrega el cliente</comment>
+            </column>
+        </property>
+        <property name="debe" type="int">
+            <column name="debe" not-null="true">
+                <comment>importe total menos la cantidad de dinero que entrega el cliente</comment>
+            </column>
+        </property>
+        <property name="descuento" type="int">
+            <column name="descuento" not-null="true">
+                <comment>descuento sobre la suma de los precios de las actividades por la canitadad de cada una</comment>
+            </column>
+        </property>
+        <property name="motivoDescuento" type="string">
+            <column name="motivoDescuento" length="45" not-null="true">
+                <comment>motivo de descuento</comment>
+            </column>
+        </property>
+        <property name="fdesde" type="date">
+            <column name="fdesde" length="10" />
+        </property>
+        <property name="fhasta" type="date">
+            <column name="fhasta" length="10" />
+        </property>
+        <set name="cobroArticulos" table="cobro_articulo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_cobro" not-null="true" />
+            </key>
+            <one-to-many class="HBMs.CobroArticulo" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,159 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <style>
+            .siempreVisible{
+                display: inline !important;
+            }
+            
+        </style>
+        <div class="sidebar-collapse">
+            <ul class="nav" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element"> <span>
+                            <div style="width: 50px; height: 50px; background-image: url('#{loginController.obtenerImagenUsuario()}'); 
+                                 background-position: center; background-size: cover; background-repeat: no-repeat; border-radius: 100%;" ></div>
+                        </span>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">#{loginController.obtenerNombreUsuario()}</strong>
+                                </span> <span class="text-muted text-xs block">Administrador <b class="caret"></b></span> </span> </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <!--                            <li><a href="index.xhtml">Perfil</a></li>
+                                                        <li><a href="index.xhtml">Contactos</a></li>
+                                                        <li><a href="index.xhtml">Mensajes</a></li>
+                                                        <li class="divider"></li>-->
+                            <li><a onclick="cerrarSession()" href="#">Logout</a></li>
+                        </ul>
+                    </div>
+                    <div class="logo-element">
+                        <img height="50" src="#{facesContext.externalContext.requestContextPath}/img/icon.png" />
+                    </div>
+                </li>      
+                <li>
+                    
+                    <li><a href="#{facesContext.externalContext.requestContextPath}#{miscellaneousUtilsBean.obtenerPath('INICIO')}"><i class="fa fa-home"></i> <span class="nav-label">Inicio</span></a></li>
+                    
+                    <h:panelGroup rendered="#{permisoController.GESTIONAR_CLIENTES || permisoController.GESTIONAR_MARCAS || permisoController.GESTIONAR_COBRO}">
+                        <li>
+                            <a href="#"><i class="fa fa-gears"></i> <span class="nav-label">Gestionar</span> <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <h:panelGroup rendered="#{permisoController.GESTIONAR_CLIENTES}">
+                                    <li ><a href="#{facesContext.externalContext.requestContextPath}#{miscellaneousUtilsBean.obtenerPath('GESTIONAR_CLIENTES')}"><i class="fa fa-user"></i> <span class="nav-label siempreVisible">Socios</span></a></li>
+                                </h:panelGroup>
+                                <h:panelGroup rendered="#{permisoController.GESTIONAR_MARCAS}">
+                                    <li ><a href="#{facesContext.externalContext.requestContextPath}#{miscellaneousUtilsBean.obtenerPath('GESTIONAR_MARCAS')}"><i class="fa fa-arrow-left"></i> <span class="nav-label siempreVisible">Panel de Acceso</span></a></li>
+                                </h:panelGroup>
+                                <h:panelGroup rendered="#{permisoController.GESTIONAR_COBRO}">
+                                    <li ><a href="#{facesContext.externalContext.requestContextPath}#{miscellaneousUtilsBean.obtenerPath('GESTIONAR_COBRO')}"><i class="fa fa-credit-card"></i> <span class="nav-label siempreVisible">Cobros</span></a></li>
+                                </h:panelGroup>
+                            </ul>
+                        </li>
+                    </h:panelGroup>
+                            
+                    <h:panelGroup rendered="#{permisoController.ANULACIONES_COBRO || permisoController.ANULACIONES_MOVIMIENTOS}">
+                        <li>
+                            <a href="#"><i class="fa fa-times"></i> <span class="nav-label">Anulaciones</span> <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <h:panelGroup rendered="#{permisoController.ANULACIONES_COBRO}">
+                                    <li ><a href="#{facesContext.externalContext.requestContextPath}#{miscellaneousUtilsBean.obtenerPath('ANULACIONES_COBRO')}"><i class="fa fa-credit-card"></i> <span class="nav-label siempreVisible">Cobros</span></a></li>
+                                </h:panelGroup>
+                                <h:panelGroup rendered="#{permisoController.ANULACIONES_MOVIMIENTOS}">
+                                    <li ><a href="#{facesContext.externalContext.requestContextPath}#{miscellaneousUtilsBean.obtenerPath('ANULACIONES_MOVIMIENTOS')}"><i class="fa fa-exchange"></i> <span class="nav-label siempreVisible">Movimientos Varios</span></a></li>
+                                </h:panelGroup>
+                            </ul>
+                        </li>
+                    </h:panelGroup>
+                            
+                    <h:panelGroup rendered="#{permisoController.CAJA_MOVIMIENTOS}">
+                        <li>
+                            <a href="#"><i class="fa fa-usd"></i> <span class="nav-label">Caja</span> <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <h:panelGroup rendered="#{permisoController.CAJA_MOVIMIENTOS}">
+                                    <li ><a href="#{facesContext.externalContext.requestContextPath}#{miscellaneousUtilsBean.obtenerPath('CAJA_MOVIMIENTOS')}"><i class="fa fa-exchange"></i> <span class="nav-label siempreVisible">Movimientos Varios</span></a></li>
+                                </h:panelGroup>
+                            </ul>
+                        </li>
+                    </h:panelGroup>
+                        
+                    <h:panelGroup rendered="#{permisoController.ESTADISTICAS_GENERALES || permisoController.ESTADISTICAS_SOCIOS}">
+                        <li>
+                            <a href="#"><i class="fa fa-line-chart"></i> <span class="nav-label">Estadisticas</span> <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <h:panelGroup rendered="#{permisoController.ESTADISTICAS_GENERALES}">
+                                    <li ><a href="#{facesContext.externalContext.requestContextPath}#{miscellaneousUtilsBean.obtenerPath('ESTADISTICAS_GENERALES')}"><i class="fa fa-pie-chart"></i> <span class="nav-label siempreVisible">Generales</span></a></li>
+                                </h:panelGroup>
+                                <h:panelGroup rendered="#{permisoController.ESTADISTICAS_SOCIOS}">
+                                    <li ><a href="#{facesContext.externalContext.requestContextPath}#{miscellaneousUtilsBean.obtenerPath('ESTADISTICAS_SOCIOS')}"><i class="fa fa-bar-chart"></i> <span class="nav-label siempreVisible">Socios</span></a></li>
+                                </h:panelGroup>
+                            </ul>
+                        </li>
+                    </h:panelGroup>
+                        
+                    <h:panelGroup rendered="#{permisoController.CONFIGURACION_USUARIOS || permisoController.CONFIGURACION_ACTIVIDADES || permisoController.CONFIGURACION_CONCEPTOS || permisoController.CONFIGURACION_ARTICULOS}">
+                        <li>
+                            <a href="#"><i class="fa fa-cog"></i> <span class="nav-label">Configuracion</span> <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <h:panelGroup rendered="#{permisoController.CONFIGURACION_USUARIOS}">
+                                    <li ><a href="#{facesContext.externalContext.requestContextPath}#{miscellaneousUtilsBean.obtenerPath('CONFIGURACION_USUARIOS')}"><i class="fa fa-user-plus"></i> <span class="nav-label siempreVisible">Usuarios</span></a></li>
+                                </h:panelGroup>
+                                <h:panelGroup rendered="#{permisoController.CONFIGURACION_ACTIVIDADES}">
+                                    <li ><a href="#{facesContext.externalContext.requestContextPath}#{miscellaneousUtilsBean.obtenerPath('CONFIGURACION_ACTIVIDADES')}"><i class="fa fa-bicycle"></i> <span class="nav-label siempreVisible">Actividades</span></a></li>
+                                </h:panelGroup>
+                                <h:panelGroup rendered="#{permisoController.CONFIGURACION_CONCEPTOS}">
+                                    <li ><a href="#{facesContext.externalContext.requestContextPath}#{miscellaneousUtilsBean.obtenerPath('CONFIGURACION_CONCEPTOS')}"><i class="fa fa-question"></i> <span class="nav-label siempreVisible">Conceptos</span></a></li>
+                                </h:panelGroup>
+                                <h:panelGroup rendered="#{permisoController.CONFIGURACION_ARTICULOS}">
+                                    <li ><a href="#{facesContext.externalContext.requestContextPath}#{miscellaneousUtilsBean.obtenerPath('CONFIGURACION_ARTICULOS')}"><i class="fa fa-shopping-cart"></i> <span class="nav-label siempreVisible">Articulos</span></a></li>
+                                </h:panelGroup>
+                            </ul>
+                        </li>
+                    </h:panelGroup>
+                        
+                    <h:panelGroup rendered="#{permisoController.REPORTES_COBRO || permisoController.REPORTE_DEUDA || permisoController.REPORTE_MOVIMIENTO}">
+                        <li>
+                            <a href="#"><i class="fa fa-print"></i> <span class="nav-label">Reportes</span> <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <h:panelGroup rendered="#{permisoController.REPORTES_COBRO}">
+                                    <li ><a href="#{facesContext.externalContext.requestContextPath}#{miscellaneousUtilsBean.obtenerPath('REPORTES_COBRO')}"><i class="fa fa-credit-card"></i> <span class="nav-label siempreVisible">Cobros</span></a></li>
+                                </h:panelGroup>
+                                <h:panelGroup rendered="#{permisoController.REPORTE_DEUDA}">
+                                    <li ><a href="#{facesContext.externalContext.requestContextPath}#{miscellaneousUtilsBean.obtenerPath('REPORTE_DEUDA')}"><i class="fa fa-money"></i> <span class="nav-label siempreVisible">Deudas</span></a></li>
+                                </h:panelGroup>
+                                <h:panelGroup rendered="#{permisoController.REPORTE_MOVIMIENTO}">
+                                    <li ><a href="#{facesContext.externalContext.requestContextPath}#{miscellaneousUtilsBean.obtenerPath('REPORTE_MOVIMIENTO')}"><i class="fa fa-exchange"></i> <span class="nav-label siempreVisible">Movimientos Varios</span></a></li>
+                                </h:panelGroup>
+                                
+                            </ul>
+                        </li>
+                    </h:panelGroup>
+                    
+                    <h:panelGroup rendered="#{permisoController.GIMNASIO_GIMNASIOS}">
+                        <li>
+                            <a href="#"><i class="fa fa-lock"></i> <span class="nav-label">Root</span> <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <h:panelGroup rendered="#{permisoController.GIMNASIO_GIMNASIOS}">
+                                    <li ><a href="#{facesContext.externalContext.requestContextPath}#{miscellaneousUtilsBean.obtenerPath('GIMNASIO_GIMNASIOS')}"><i class="fa fa-database"></i> <span class="nav-label siempreVisible">Gimnasios</span></a></li>
+                                </h:panelGroup>  
+                            </ul>
+                        </li>
+                    </h:panelGroup>
+                    
+                    <li>
+                        <a href="#" onclick="cerrarSession()"><i class="fa fa-sign-out"></i> <span class="nav-label">Logout</span></a>
+                    </li>
+                    
+                </li>
+            </ul>
+        </div>
+        <h:form id="formularioMenuIzq" style="display: none">
+            <h:commandLink id="logout" value="Logout" action="#{loginController.logOut()}" />
+        </h:form>
+    </nav>
+    <script>
+        
+        function cerrarSession(){
+            $( "#formularioMenuIzq\\:logout" ).click();
+        };
+        
+    </script>
+</html>

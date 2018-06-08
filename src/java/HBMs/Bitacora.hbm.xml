@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/02/2017 08:16:47 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="HBMs.Bitacora" table="bitacora" catalog="fitnet" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="usuario" class="HBMs.Usuario" fetch="select">
+            <column name="id_usuario" not-null="true" />
+        </many-to-one>
+        <property name="fecha" type="timestamp">
+            <column name="fecha" length="19" not-null="true" />
+        </property>
+        <property name="estado" type="string">
+            <column name="estado" length="45" not-null="true" />
+        </property>
+        <set name="articulos" table="articulo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_bitacora" not-null="true" />
+            </key>
+            <one-to-many class="HBMs.Articulo" />
+        </set>
+        <set name="marcas" table="marca" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_bitacora" not-null="true" />
+            </key>
+            <one-to-many class="HBMs.Marca" />
+        </set>
+        <set name="actividads" table="actividad" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_bitacora" not-null="true" />
+            </key>
+            <one-to-many class="HBMs.Actividad" />
+        </set>
+        <set name="clientes" table="cliente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_bitacora" not-null="true" />
+            </key>
+            <one-to-many class="HBMs.Cliente" />
+        </set>
+        <set name="movimientos" table="movimiento" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_bitacora" not-null="true" />
+            </key>
+            <one-to-many class="HBMs.Movimiento" />
+        </set>
+        <set name="conceptos" table="concepto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_bitacora" not-null="true" />
+            </key>
+            <one-to-many class="HBMs.Concepto" />
+        </set>
+        <set name="cobros" table="cobro" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_bitacora" not-null="true" />
+            </key>
+            <one-to-many class="HBMs.Cobro" />
+        </set>
+    </class>
+</hibernate-mapping>

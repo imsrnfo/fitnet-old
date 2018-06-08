@@ -1,0 +1,203 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="./../menu/mainmenu.xhtml">
+    <ui:define name="content">
+        <!-- Data Tables -->
+        <link href="#{facesContext.externalContext.requestContextPath}/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet"/>
+        <link href="#{facesContext.externalContext.requestContextPath}/css/plugins/dataTables/dataTables.responsive.css" rel="stylesheet"/>
+        <link href="#{facesContext.externalContext.requestContextPath}/css/plugins/dataTables/dataTables.tableTools.min.css" rel="stylesheet"/>
+        <h:form id="formulario">    
+            
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Estadisticas de Socios</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            #{estadisticasSociosController.obtenerCantClientesActivos()}
+                            #{estadisticasSociosController.obtenerCantClientesHombres()}
+                            #{estadisticasSociosController.obtenerCantClientesInactivos()}
+                            #{estadisticasSociosController.obtenerCantClientesMujeres()}
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>Socios por Sexo.
+                                </h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                    <a class="close-link">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <div>
+                                    <canvas id="pieChart" height="200"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>Socios por Edad.
+                                </h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                    <a class="close-link">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <div>
+                                    <canvas id="polarChart" height="200"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>Socios por Estado.
+                                </h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                    <a class="close-link">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <div>
+                                    <canvas id="doughnutChart" height="200"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+            </div>
+            <!-- ChartJS-->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+            
+            <!-- Data Tables -->
+            <script src="#{facesContext.externalContext.requestContextPath}/js/plugins/dataTables/jquery.dataTables.js"></script>
+            <script src="#{facesContext.externalContext.requestContextPath}/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+            <script src="#{facesContext.externalContext.requestContextPath}/js/plugins/dataTables/dataTables.responsive.js"></script>
+            <script src="#{facesContext.externalContext.requestContextPath}/js/plugins/dataTables/dataTables.tableTools.min.js"></script>
+            <script>
+                /* Init DataTables */
+                var oTable = $('#editable').dataTable();
+                
+                var data = {
+                    labels: [
+                        "Hombres",
+                        "Mujeres"
+                    ],
+                    datasets: [
+                        {
+                            data: [#{estadisticasSociosController.obtenerCantClientesHombres()}, #{estadisticasSociosController.obtenerCantClientesMujeres()} ],
+                            backgroundColor: [
+                                "#FF6384",
+                                "#36A2EB"
+                            ],
+                            hoverBackgroundColor: [
+                                "#FF6384",
+                                "#36A2EB"
+                            ]
+                        }]
+                };
+                
+                
+                
+                
+                var ctx = document.getElementById("pieChart").getContext("2d");
+                var ctx2 = document.getElementById("polarChart").getContext("2d");
+                var ctx3 = document.getElementById("doughnutChart").getContext("2d");
+                
+                
+                var myPieChart = new Chart(ctx,{
+                    type: 'pie',
+                    data: data
+                });
+                
+                var data2 = {
+                    datasets: [{
+                            data: [#{estadisticasSociosController.obtenerCantClientesMenoresIgnaules24Anios()},#{estadisticasSociosController.obtenerCantClientesEntre25y34Anios()}, #{estadisticasSociosController.obtenerCantClientesEntre35y44Anios()},#{estadisticasSociosController.obtenerCantClientesMayoresDe44Anios()}, ],
+                            backgroundColor: [
+                                "#FF6384",
+                                "#36A2EB",
+                                "#FFCE56",
+                                "#FFF256"
+                            ],
+                            label: 'My dataset' // for legend
+                        }],
+                    labels: [
+                        "Menores de 24 años",
+                        "Entre 25 y 34 años",
+                        "Entre 35 y 44 años",
+                        "Mayores de 45 años"
+                    ]
+                };
+                
+                
+                new Chart(ctx2, {
+                    data: data2,
+                    type: 'polarArea'
+                });
+                
+                
+                var data3 = {
+                    labels: [
+                        "Activos",
+                        "Inactivos",
+                    ],
+                    datasets: [
+                        {
+                            data: [#{estadisticasSociosController.obtenerCantClientesActivos()}, #{estadisticasSociosController.obtenerCantClientesInactivos()}],
+                            backgroundColor: [
+                                "#FF6384",
+                                "#36A2EB"
+                            ],
+                            hoverBackgroundColor: [
+                                "#FF6384",
+                                "#36A2EB"
+                            ]
+                        }]
+                };
+                
+                var myDoughnutChart = new Chart(ctx3, {
+                    type: 'doughnut',
+                    data: data3
+                });
+                
+            </script>
+        </h:form>
+    </ui:define>
+</ui:composition>

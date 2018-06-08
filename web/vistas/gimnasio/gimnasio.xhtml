@@ -1,0 +1,187 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="./../menu/mainmenu.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define name="content">
+        <style> td, th { padding: 10px !important;} </style>
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5><i class="fa fa-edit"></i> Tabla de Administracion de Gimnasios</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="ibox-content" style="overflow: auto">
+                <h:form id="form"  enctype="multipart/form-data">
+                    <table>
+                        <tr>
+                            <td> Nombre : </td>
+                            <td>
+                                <h:inputText value="#{rootGimnasioController.gimnasio.nombre}" class="form-control" disabled="#{request.getParameter('op') == 'detalle'}"/>
+                            </td>
+                        </tr>
+                            
+                        <tr>
+                            <td> Logo : </td>
+                            <td> 
+                                <div class="botonImagen">
+                                    <c:if test="#{rootGimnasioController.gimnasio.id == 0}">
+                                        <h:commandButton class="btn btn-success" value="Imagen Perfil" actionListener="#{rootGimnasioController.cargarSubirImagenLogo()}"/>
+                                    </c:if>
+                                    <c:if test="#{rootGimnasioController.gimnasio.id > 0}">
+                                        <img src="#{rootGimnasioController.gimnasio.imagen}" height="200" style="border-radius: 10px; box-shadow: 0px 0px 10px;" />
+                                    </c:if>
+                                </div>
+                            </td>
+                        </tr>
+                            
+                            <c:if test="#{rootGimnasioController.gimnasio.id == 0}">
+                            
+                            <tr>
+                                <td> Nombre : </td>
+                                <td>
+                                    <h:inputText value="#{rootGimnasioController.usuario.nombre}" class="form-control"/>                          
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td> Nick : </td>
+                                <td>
+                                    <h:inputText value="#{rootGimnasioController.usuario.username}" class="form-control"/>                          
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td> Contraseña : </td>
+                                <td>
+                                    <h:inputText value="#{rootGimnasioController.usuario.password}" class="form-control"/>                          
+                                </td>
+                            </tr>
+                                    
+                            <tr>
+                                <td> Foto : </td>
+                                <td> 
+                                    <h:commandButton class="btn btn-success" value="Imagen Perfil" actionListener="#{rootGimnasioController.cargarSubirImagenFoto()}"/>
+                                </td>
+                            </tr>
+                                
+                        </c:if>
+                            
+                    </table>
+                    <h:commandButton style="float: right; padding: 10px; margin: 5px;" class="btn btn-success" value="Guardar" actionListener="#{rootGimnasioController.guardar()}" rendered="#{!(request.getParameter('op') == 'detalle')}" />
+                    <h:commandButton style="float: right; padding: 10px; margin: 5px;" class="btn btn-success" value="Cancelar" actionListener="#{rootGimnasioController.cancelar()}" rendered="#{!(request.getParameter('op') == 'detalle')}"/>
+                </h:form>            
+            </div>
+        </div>
+            
+            
+        <c:if test="#{rootGimnasioController.gimnasio.id == 0}">
+            
+            <div class="modal inmodal fade" id="ModalGimnasio" tabindex="-1" role="dialog"  aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true"></span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title">Logo del Gimansio</h4>
+                            <small class="font-bold">Seleccione el logo del gimnasio</small>
+                        </div>
+                        <div class="modal-body">
+                            <p>Si decide <strong> no seleccionar ningun logo </strong> al gimnasio actual se lo visualizara con la siguiente imagen ilustrativa.</p>
+                            <p><strong>En caso contraio de click en "Seleccionar Imagen" </strong></p>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="ibox-content text-center">
+                                        <h1>Logo del gimansio</h1>
+                                        <div class="m-b-sm">
+                                            <img alt="image" class="img-circle" height="100" width="100" src="#{facesContext.externalContext.requestContextPath}/img/gym-icon.jpg"/>
+                                        </div>
+                                        <p class="font-bold">Imagen Ilustrativa</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h:form class="m-t" id="formulario" role="form" enctype="multipart/form-data">
+                                <p class="text-muted text-center"><small>Seleccione el logo del gimnasio.</small></p>
+                                <div class="form-group">
+                                    <p:fileUpload value="#{rootGimnasioController.partLogo}" mode="simple"  />
+                                </div>
+                                <h:commandButton style="display: none !important" id="enviarFoto" type="submit" class="btn btn-primary block full-width m-b" action="#{rootGimnasioController.cargarImagenLogo()}"/>
+                            </h:form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-white" data-dismiss="modal">Cancelar</button>
+                            <button type="button" onclick="document.getElementById('formulario:enviarFoto').click()" class="btn btn-primary">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+                
+            <div class="modal inmodal fade" id="ModalUsuario" tabindex="-1" role="dialog"  aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true"></span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title">Imagen de Perfil</h4>
+                            <small class="font-bold">Seleccione la imagen de perfil</small>
+                        </div>
+                        <div class="modal-body">
+                            <p>Si decide <strong> no seleccionar una imagen de perfil </strong> al usuario actual se lo visualizara con la siguiente imagen ilustrativa.</p>
+                            <p><strong>En caso contraio de click en "Seleccionar Imagen" </strong></p>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="ibox-content text-center">
+                                        <h1>Imagen de Perfil</h1>
+                                        <div class="m-b-sm">
+                                            <img alt="image" class="img-circle" height="100" width="100" src="#{facesContext.externalContext.requestContextPath}/img/gym-icon.jpg"/>
+                                        </div>
+                                        <p class="font-bold">Imagen Ilustrativa</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h:form class="m-t" id="formularioUsuario" role="form" enctype="multipart/form-data">
+                                <p class="text-muted text-center"><small>Seleccione la imagen de perfil.</small></p>
+                                <div class="form-group">
+                                    <p:fileUpload value="#{rootGimnasioController.partFoto}" mode="simple"  />
+                                </div>
+                                <h:commandButton style="display: none !important" id="enviarFoto" type="submit" class="btn btn-primary block full-width m-b" action="#{rootGimnasioController.cargarImagenFoto()}"/>
+                            </h:form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-white" data-dismiss="modal">Cancelar</button>
+                            <button type="button" onclick="document.getElementById('formularioUsuario:enviarFoto').click()" class="btn btn-primary">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                
+                function subirImagenLogo(){
+                    $('#ModalGimnasio').modal({show: 'true'});
+                }
+                
+                function subirImagenFoto(){
+                    $('#ModalUsuario').modal({show: 'true'});
+                }
+                
+            </script>
+        </c:if>
+            
+        <script>
+            $( document ).ready(function() {
+                
+                if ($("#form\\:precio").val()==="0")$("#form\\:precio").val("");
+                $("#form\\:precio").attr("placeholder", "Pesos uruguayos");
+                
+            });
+        </script>
+    </ui:define>
+</ui:composition>

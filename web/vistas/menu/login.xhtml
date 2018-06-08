@@ -1,0 +1,223 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <title>Fitnet</title>
+        <link rel="icon" href="#{facesContext.externalContext.requestContextPath}/img/icon.png"></link>
+        
+        <link href="#{facesContext.externalContext.requestContextPath}/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="#{facesContext.externalContext.requestContextPath}/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+        
+        <link href="#{facesContext.externalContext.requestContextPath}/css/animate.css" rel="stylesheet"/>
+        <link href="#{facesContext.externalContext.requestContextPath}/css/style.css" rel="stylesheet"/>
+        
+        <!-- Toastr style -->
+        <link href="#{facesContext.externalContext.requestContextPath}/css/plugins/toastr/toastr.min.css" rel="stylesheet"/>
+        
+        <link href="#{facesContext.externalContext.requestContextPath}/css/toastIconos.css" rel="stylesheet"/>
+        <link href="#{facesContext.externalContext.requestContextPath}/css/tecladoNumerico.css" rel="stylesheet"/>
+        
+    </h:head>
+    
+    <h:body class="gray-bg" style="background-color: #2f4050">
+        <style>
+            .usuarioCompartido{
+                color: #a7b1c2;
+                font-weight: 600;
+                padding: 14px 20px 0px 25px;
+            }
+            #usuariosCompartidos{
+                overflow-y: scroll;
+            }
+            @media only screen and (max-width: 768px) {
+                #usuariosCompartidos{
+                    display: none;
+                }
+            }
+            #page-wrapper{
+                min-height: 0 !important;
+            }
+        </style>
+        <div id="wrapper">
+            
+            <nav class="navbar-default navbar-static-side" role="navigation" id="usuariosCompartidos">
+                <ul class="nav" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element"> 
+                            <span class="clear"> 
+                                <span class="block m-t-xs"> 
+                                    <strong class="font-bold" style="color: #DFE4ED;">Estas compartiendo el gimnasio con:</strong>
+                                </span> 
+                            </span> 
+                        </div>
+                    </li>
+                </ul>
+                <table>
+                    <ui:repeat value="#{menuLoginController.clientesLogueados}" var="cliente" varStatus="myVarStatus">
+                    <tr>
+                        <td style="padding: 14px 0px 0px 25px;">
+                            <div style="width: 50px; height: 50px; background-image: url('#{cliente.imagen}'); 
+                                 background-position: center; background-size: cover; background-repeat: no-repeat; border-radius: 100%;" ></div>
+                        </td>
+                        <td class="usuarioCompartido">
+                            #{cliente.nombre}
+                        </td>
+                    </tr>
+                    </ui:repeat>
+                </table>
+                
+                
+            </nav>
+            
+            <div id="page-wrapper" class="gray-bg dashbard-1">
+                <div class="middle-box text-center loginscreen  animated fadeInDown">
+                    <div>
+                        <div class="m-b-md">
+                            <img alt="image" style="width:300px" class="m-b-md" src="#{facesContext.externalContext.requestContextPath}#{menuLoginController.obtenerImagenGimnasio()}"/>
+                        </div>
+                        <h3>Bienvenido a #{menuLoginController.obtenerNombreGimnasio()}</h3>
+                        <p>
+                            Para ingresar al gimnasio complete el campo con su numero de cedula
+                        </p>
+                        <h:form class="m-t" role="form" id="formlogin">
+                            <div class="form-group">
+                                <h:inputText class="form-control number-input" value="#{cedula}" maxlength="8" required="" />
+                            </div>
+                            <h:commandButton type="submit" class="btn btn-primary block full-width m-b" value="Login" action="#{menuLoginController.clienteLogin(cedula)}"/>
+                            <p class="text-muted text-center"><small>Si eres nuevo habla con el administrador para que se te asigne una cuenta.</small></p>
+                        </h:form>
+                    </div>
+                </div>
+                <!-- ## wrapper -->
+                <div class="wrapper">
+                    <!-- ## phone area -->
+                    <div class="phone">
+                        <!-- ## phone area -->
+                        <div class="phone-container">
+                            <!-- ## keyboard -->
+                            <div class="keyboard">
+                                <div class="number">
+                                    <span data-number="1"><i>1</i></span>
+                                    <span data-number="2"><i>2</i></span>
+                                    <span data-number="3"><i>3</i></span>
+                                    <span data-number="4"><i>4</i></span>
+                                    <span data-number="5"><i>5</i></span>
+                                    <span data-number="6"><i>6</i></span>
+                                    <span data-number="7"><i>7</i></span>
+                                    <span data-number="8"><i>8</i></span>
+                                    <span data-number="9"><i>9</i></span>
+                                </div>
+                                <div class="number aling-right">
+                                    <span data-number="0"><i>0</i></span>
+                                    <span><i class="delete"><img src="https://image.flaticon.com/icons/svg/61/61167.svg" width="30" height="30" alt="Left Arrow free icon" title="Left Arrow free icon"/></i></span>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal inmodal fade" id="ModalValidarMarcaAdministrador" tabindex="-1" role="dialog"  aria-hidden="true">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <h4 class="modal-title">Cuota Vencida</h4>
+                                <small class="font-bold">Contacte al administador</small>
+                            </div>
+                            <div class="modal-body">
+                                <p><strong>Su cuota ah vencido, </strong>para acceder solicite el permiso del administrador atual del gimnasio.</p>
+                                <p><strong>El administrador actual es: </strong></p>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="ibox-content text-center">
+                                            <h1>#{menuLoginController.obtenerNombreUsuario()}</h1>
+                                            <div class="m-b-sm">
+                                                <img alt="image" class="img-circle" height="100" width="100" src="#{facesContext.externalContext.requestContextPath}#{menuLoginController.obtenerImagenUsuario()}"/>
+                                            </div>
+                                            <p class="font-bold">Administrador Actual</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h:form class="m-t" id="formulario" role="form">
+                                    <p class="text-muted text-center"><small>Ingrese su contraseña.</small></p>
+                                    <div class="form-group">
+                                        <h:inputSecret class="form-control" value="#{password}" required=""/>
+                                        <h:inputHidden id="cedula" value="#{cedula}" required=""/>
+                                    </div>
+                                    <h:commandButton style="display: none" id="PermitirAccesso" type="submit" class="btn btn-primary block full-width m-b" value="Login" action="#{menuLoginController.permitirAccesso(cedula, password)}"/>
+                                </h:form>
+                            </div>
+                            
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-white" data-dismiss="modal">Cancelar</button>
+                                
+                                <button type="button" onclick="document.getElementById('formulario:PermitirAccesso').click()" class="btn btn-primary">Permitir Acceso</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mainly scripts -->
+                <script src="#{facesContext.externalContext.requestContextPath}/js/jquery-2.1.1.js"></script>
+                <script src="#{facesContext.externalContext.requestContextPath}/js/bootstrap.min.js"></script>
+                
+                <!-- Toastr script -->
+                <script src="#{facesContext.externalContext.requestContextPath}/js/plugins/toastr/toastr.min.js"></script>
+                
+                <script>
+                    //<![CDATA[
+                    function plazoVencido(cedula){
+                
+                        $("#formulario\\:cedula").val(cedula);
+                        $('#ModalValidarMarcaAdministrador').modal({show: 'true'});
+                
+                    }
+            
+                    $(".number-input").keyup(function(e){
+                        if($(this).val().length >= 8)
+                            $(".call-button").addClass("show");  
+                        if(e.which == 8)
+                            $(".call-button").removeClass("show");
+                    })
+                    //called when key is pressed in textbox
+                    $(".number-input").keypress(function (e) {
+                        //if the letter is not digit then display error and don't type anything
+                        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                            //display error message
+                            return false;
+                        }
+                    });
+
+
+                    $("[data-number]").on('click',function(){
+                        if($(".number-input").val().length < 8){
+                            var phoneNumber = $(".number-input").val() + $(this).data("number");
+                            $(".number-input").val(phoneNumber);
+                        }
+                        if($(".number-input").val().length == 8)
+                            $(".call-button").addClass("show");  
+                    });
+
+                    $(".delete").on('click',function(){
+                        var phoneNumber = $(".number-input").val().slice(0,-1);
+                        $(".number-input").val("");
+                        $(".number-input").val(phoneNumber);
+                        $(".call-button").removeClass("show");
+                    });
+
+                    $("#usuariosCompartidos").height($("#page-wrapper").height());
+
+                    //]]>
+            
+                </script>
+            </div>
+        </div>
+    </h:body>
+</html>
+

@@ -1,0 +1,183 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="./../menu/mainmenu.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define name="content">
+        <link href="#{facesContext.externalContext.requestContextPath}/css/plugins/datapicker/datepicker3.css" rel="stylesheet"/>
+        <link href="#{facesContext.externalContext.requestContextPath}/css/plugins/colorpicker/bootstrap-colorpicker.min.css" rel="stylesheet"/>
+        <style> td, th { padding: 10px !important;} </style>
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5><i class="fa fa-edit"></i> Tabla de Administracion de Clientes</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+                
+            <div class="ibox-content" style="overflow: auto">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#home">Datos Personales</a></li>
+                    <li><a data-toggle="tab" href="#menu1">Actividades</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+                        <h:form>
+                            <table>
+                                <tr>
+                                    <td> Nombre : </td>
+                                    <td>
+                                        <h:inputText value="#{gestionarClienteController.cliente.nombre}" class="form-control" disabled="#{request.getParameter('op') == 'detalle'}"/>                          
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td> Cedula : </td>
+                                    <td>
+                                        <h:inputText value="#{gestionarClienteController.cliente.cedula}" class="form-control" disabled="#{(request.getParameter('op') == 'detalle') || not empty gestionarClienteController.cliente.cedula}"></h:inputText>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td> Fecha de nacimiento : </td>
+                                    <td>
+                                        <div id="data_1" style="width: 100%;">
+                                            <div class="input-group date">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><h:inputText class="form-control" value="#{gestionarClienteController.fnac}" disabled="#{request.getParameter('op') == 'detalle'}"/>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>    
+                                
+                                <tr>
+                                    <td> Correo :</td>
+                                    <td> 
+                                        <div class="input-group" style="width: 100%;">
+                                            <span class="input-group-addon">@</span> 
+                                            <h:inputText value="#{gestionarClienteController.cliente.correo}" class="form-control" disabled="#{request.getParameter('op') == 'detalle'}"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td> Celular :</td>
+                                    <td> 
+                                        <h:inputText value="#{gestionarClienteController.cliente.celular}" class="form-control" disabled="#{request.getParameter('op') == 'detalle'}"></h:inputText> 
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td> Mutualista :</td>
+                                    <td> 
+                                        <h:inputText value="#{gestionarClienteController.cliente.mutualista}" class="form-control" disabled="#{request.getParameter('op') == 'detalle'}"/>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td> Sexo :</td>
+                                    <td> 
+                                        <h:selectOneMenu value="#{gestionarClienteController.cliente.sexo}" class="form-control" disabled="#{request.getParameter('op') == 'detalle'}">
+                                            <f:selectItem itemValue="Masculino" itemLabel="Masculino" />
+                                            <f:selectItem itemValue="Femenino" itemLabel="Femenino" />
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr> 
+                                    <td> Foto :</td>
+                                    <td> 
+                                        <div class="botonImagen">
+                                            <c:if test="#{gestionarClienteController.cliente.id == 0}">
+                                                <h:commandButton class="btn btn-success" value="Imagen Perfil" actionListener="#{gestionarClienteController.cargarSubirImagen()}"/>
+                                            </c:if>
+                                            <c:if test="#{gestionarClienteController.cliente.id != 0}">
+                                                <img src="#{gestionarClienteController.cliente.imagen}" height="200" style="border-radius: 10px; box-shadow: 0px 0px 10px;" onerror="defaultImage(this);"/>
+                                            </c:if>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <script>
+                                    function defaultImage(img){
+                                        img.onerror = "";
+                                        img.src = '#{facesContext.externalContext.requestContextPath}/img/gym-icon.jpg';
+                                    }
+                                </script>
+                                
+                            </table>
+                            
+                            <h:commandButton style="float: right; padding: 10px; margin: 5px;" class="btn btn-success" value="Guardar" actionListener="#{gestionarClienteController.guardar()}" rendered="#{!(request.getParameter('op') == 'detalle')}"/>
+                            
+                            <h:commandButton style="float: right; padding: 10px; margin: 5px;" class="btn btn-success" value="Cancelar" actionListener="#{gestionarClienteController.cancelar()}" rendered="#{!(request.getParameter('op') == 'detalle')}"/>
+                        </h:form>
+                    </div>
+                    <div id="menu1" class="tab-pane fade">
+                        <h3>Actividades</h3>
+                        <p>Aqui se listaran futuras actividades.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <c:if test="#{gestionarClienteController.cliente.id == 0}">
+            <div class="modal inmodal fade" id="ModalValidarMarcaAdministrador" tabindex="-1" role="dialog"  aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true"></span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title">Imagen de Perfil</h4>
+                            <small class="font-bold">Seleccione la imagen de perfil</small>
+                        </div>
+                        <div class="modal-body">
+                            <p>Si decide <strong> no seleccionar una imagen de perfil </strong> al cliente actual se lo visualizara con la siguiente imagen ilustrativa.</p>
+                            <p><strong>En caso contraio de click en "Seleccionar Imagen" </strong></p>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="ibox-content text-center">
+                                        <h1>Imagen de Perfil</h1>
+                                        <div class="m-b-sm">
+                                            <img alt="image" class="img-circle" height="100" width="100" src="#{facesContext.externalContext.requestContextPath}/img/gym-icon.jpg"/>
+                                        </div>
+                                        <p class="font-bold">Imagen Ilustrativa</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h:form class="m-t" id="formulario" role="form" enctype="multipart/form-data">
+                                <p class="text-muted text-center"><small>Seleccione la imagen de perfil.</small></p>
+                                <div class="form-group">
+                                    <p:fileUpload value="#{gestionarClienteController.partImagenPerfil}" mode="simple"  />
+                                </div>
+                                <h:commandButton style="display: none !important" id="enviarFoto" type="submit" class="btn btn-primary block full-width m-b" action="#{gestionarClienteController.cargarImagen()}"/>
+                            </h:form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-white" data-dismiss="modal">Cancelar</button>
+                            <button type="button" onclick="document.getElementById('formulario:enviarFoto').click()" class="btn btn-primary">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                function subirImagen(){
+                    $('#ModalValidarMarcaAdministrador').modal({show: 'true'});
+                }
+            </script>
+        </c:if>
+        <script src="#{facesContext.externalContext.requestContextPath}/js/plugins/datapicker/bootstrap-datepicker.js"></script>  
+        <script>
+            $('#data_1 .input-group.date').datepicker({
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                calendarWeeks: true,
+                format: 'dd/mm/yyyy',
+                autoclose: true
+            });
+        </script>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,81 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="./../menu/mainmenu.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define name="content">
+        <style> td, th { padding: 10px !important;} </style>
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5><i class="fa fa-edit"></i> Tabla de Administracion de Movimientos</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+                
+            <div class="ibox-content" style="overflow: auto">
+                <h:form id="form">
+                    <table>
+                        
+                        <tr>
+                            <td> 
+                                Concepto : 
+                            </td>
+                            <td>
+                                <h:selectOneMenu styleClass="form-control" value="#{cajaMovimientoController.concepto}" converter="#{cajaMovimientoController.obtenerConversorConcepto()}">
+                                    <f:selectItem itemValue="#{null}" itemLabel="Seleccionar Concepto" />
+                                    <f:selectItems value="#{cajaMovimientoController.obtenerConceptos()}" var="item" itemLabel="#{item.nombre}"  itemValue="#{item}" />
+                                </h:selectOneMenu>
+                            </td>
+                        </tr>
+                            
+                        <tr>
+                            <td> Tipo de movimiento :</td>
+                            <td> 
+                                <h:selectOneMenu value="#{cajaMovimientoController.movimiento.tipo}" class="form-control" disabled="#{request.getParameter('op') == 'detalle'}">
+                                    <f:selectItem itemValue="Seleccionar" itemLabel="Seleccionar tipo de movimiento" />
+                                    <f:selectItem itemValue="Ingreso" itemLabel="Ingreso" />
+                                    <f:selectItem itemValue="Egreso" itemLabel="Egreso" />
+                                </h:selectOneMenu>
+                            </td>
+                        </tr>
+                            
+                        <tr>
+                            <td> Descripcion : </td>
+                            <td>
+                                <h:inputText value="#{cajaMovimientoController.movimiento.descripcion}" class="form-control" disabled="#{request.getParameter('op') == 'detalle'}"/>
+                            </td>
+                        </tr>
+                            
+                        <tr>
+                            <td> Importe :</td>
+                            <td> 
+                                <h:inputText value="#{cajaMovimientoController.movimiento.importe}" class="form-control" id="precio" disabled="#{request.getParameter('op') == 'detalle'}">
+                                    <f:convertNumber integerOnly="true"/>
+                                </h:inputText> 
+                            </td>
+                        </tr>
+                            
+                    </table>
+                    <h:commandButton style="float: right; padding: 10px; margin: 5px;" class="btn btn-success" value="Guardar" action="#{cajaMovimientoController.guardar()}" rendered="#{!(request.getParameter('op') == 'detalle')}" />
+                    <h:commandButton style="float: right; padding: 10px; margin: 5px;" class="btn btn-success" value="Cancelar" action="#{cajaMovimientoController.cancelar()}" rendered="#{!(request.getParameter('op') == 'detalle')}"/>
+                </h:form>            
+            </div>
+        </div>
+        <script>
+            $( document ).ready(function() {
+                
+                if ($("#form\\:precio").val()==="0")$("#form\\:precio").val("");
+                $("#form\\:precio").attr("placeholder", "Pesos uruguayos");
+                
+            });
+        </script>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,146 @@
+<pretty-config xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
+                      http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+
+<!--        <url-mapping id="index">
+		<pattern value="/" />
+		<view-id value="/login.xhtml" />
+	</url-mapping>-->
+        <url-mapping id="index">
+		<pattern value="/" />
+		<view-id value="/index.xhtml" />
+	</url-mapping>
+        <url-mapping id="login">
+		<pattern value="/login" />
+		<view-id value="/login.xhtml" />
+	</url-mapping>
+	<url-mapping id="inicio">
+		<pattern value="/inicio" />
+		<view-id value="/vistas/menu/mainmenu.xhtml" />
+	</url-mapping>
+        <url-mapping id="AnulacionesCobro">
+		<pattern value="/anulaciones/cobro" />
+		<view-id value="/vistas/anulaciones/cobro.xhtml" />
+	</url-mapping>
+         <url-mapping id="AnulacionesMovimientos">
+		<pattern value="/anulaciones/movimientos" />
+		<view-id value="/vistas/anulaciones/movimientos.xhtml" />
+	</url-mapping>
+        <url-mapping id="CajaMovimiento">
+		<pattern value="/caja/movimiento" />
+		<view-id value="/vistas/caja/movimiento.xhtml" />
+	</url-mapping>
+         <url-mapping id="CajaMovimientos">
+		<pattern value="/caja/movimientos" />
+		<view-id value="/vistas/caja/movimientos.xhtml" />
+	</url-mapping>
+        <url-mapping id="ConfiguracionActividad">
+		<pattern value="/configuracion/actividad/#{id_actividad}/#{op}" />
+		<view-id value="/vistas/configuracion/actividad.xhtml" />
+	</url-mapping>
+        <url-mapping id="ConfiguracionActividadSinParametro">
+		<pattern value="/configuracion/actividad" />
+		<view-id value="/vistas/configuracion/actividad.xhtml" />
+	</url-mapping>
+        <url-mapping id="ConfiguracionActividades">
+		<pattern value="/configuracion/actividades" />
+		<view-id value="/vistas/configuracion/actividades.xhtml" />
+	</url-mapping>
+        <url-mapping id="ConfiguracionArticulo">
+		<pattern value="/configuracion/articulo/#{id_articulo}/#{op}" />
+		<view-id value="/vistas/configuracion/articulo.xhtml" />
+	</url-mapping>
+         <url-mapping id="ConfiguracionArticuloSinParametro">
+		<pattern value="/configuracion/articulo" />
+		<view-id value="/vistas/configuracion/articulo.xhtml" />
+	</url-mapping>
+        <url-mapping id="ConfiguracionArticulos">
+		<pattern value="/configuracion/articulos" />
+		<view-id value="/vistas/configuracion/articulos.xhtml" />
+	</url-mapping>
+        <url-mapping id="ConfiguracionConcepto">
+		<pattern value="/configuracion/concepto/#{id_concepto}/#{op}" />
+		<view-id value="/vistas/configuracion/concepto.xhtml" />
+	</url-mapping>
+        <url-mapping id="ConfiguracionConceptoSinParametro">
+		<pattern value="/configuracion/concepto" />
+		<view-id value="/vistas/configuracion/concepto.xhtml" />
+	</url-mapping>
+        <url-mapping id="ConfiguracionConceptos">
+		<pattern value="/configuracion/conceptos" />
+		<view-id value="/vistas/configuracion/conceptos.xhtml" />
+	</url-mapping>
+        <url-mapping id="ConfiguracionUsuario">
+		<pattern value="/configuracion/usuario/#{id_usuario}/#{op}" />
+		<view-id value="/vistas/configuracion/usuario.xhtml" />
+	</url-mapping>
+        <url-mapping id="ConfiguracionUsuarioSinParametro">
+		<pattern value="/configuracion/usuario" />
+		<view-id value="/vistas/configuracion/usuario.xhtml" />
+	</url-mapping>
+        <url-mapping id="ConfiguracionUsuarios">
+		<pattern value="/configuracion/usuarios" />
+		<view-id value="/vistas/configuracion/usuarios.xhtml" />
+	</url-mapping>
+        <url-mapping id="EstadisticasGenerales">
+		<pattern value="/estadisticas/generales" />
+		<view-id value="/vistas/estadisticas/generales.xhtml" />
+	</url-mapping>
+        <url-mapping id="EstadisticasSocios">
+		<pattern value="/estadisticas/socios" />
+		<view-id value="/vistas/estadisticas/socios.xhtml" />
+	</url-mapping>
+        <url-mapping id="GestionarCliente">
+		<pattern value="/gestionar/cliente/#{id_cliente}/#{op}" />
+		<view-id value="/vistas/gestionar/cliente.xhtml" />
+	</url-mapping>
+        <url-mapping id="GestionarClienteSinParametro">
+		<pattern value="/gestionar/cliente" />
+		<view-id value="/vistas/gestionar/cliente.xhtml" />
+	</url-mapping>
+        <url-mapping id="GestionarClientes">
+		<pattern value="/gestionar/clientes" />
+		<view-id value="/vistas/gestionar/clientes.xhtml" />
+	</url-mapping>
+        <url-mapping id="GestionarCobro">
+		<pattern value="/gestionar/cobro/#{id_cliente}" />
+		<view-id value="/vistas/gestionar/cobro.xhtml" />
+	</url-mapping>
+        <url-mapping id="GestionarCobroSinParametro">
+		<pattern value="/gestionar/cobro" />
+		<view-id value="/vistas/gestionar/cobro.xhtml" />
+	</url-mapping>
+        <url-mapping id="GestionarMarcas">
+		<pattern value="/gestionar/marcas" />
+		<view-id value="/vistas/gestionar/marcas.xhtml" />
+	</url-mapping>
+        <url-mapping id="GimnasioGimnasio">
+		<pattern value="/gimnasio/gimnasio/#{id_gimnasio}/#{op}" />
+		<view-id value="/vistas/gimnasio/gimnasio.xhtml" />
+	</url-mapping>
+        <url-mapping id="GimnasioGimnasioSinParametro">
+		<pattern value="/gimnasio/gimnasio" />
+		<view-id value="/vistas/gimnasio/gimnasio.xhtml" />
+	</url-mapping>
+        <url-mapping id="GimnasioGimnasios">
+		<pattern value="/gimnasio/gimnasios" />
+		<view-id value="/vistas/gimnasio/gimnasios.xhtml" />
+	</url-mapping>
+        <url-mapping id="MenuLogin">
+		<pattern value="/menu/login" />
+		<view-id value="/vistas/menu/login.xhtml" />
+	</url-mapping>
+        <url-mapping id="ReportesCobros">
+		<pattern value="/reportes/cobros" />
+		<view-id value="/vistas/reportes/cobros.xhtml" />
+	</url-mapping>
+        <url-mapping id="ReportesDeudas">
+		<pattern value="/reportes/deudas" />
+		<view-id value="/vistas/reportes/deudas.xhtml" />
+	</url-mapping>
+        <url-mapping id="ReportesMovimientos">
+		<pattern value="/reportes/movimientos" />
+		<view-id value="/vistas/reportes/movimientos.xhtml" />
+	</url-mapping>
+</pretty-config>

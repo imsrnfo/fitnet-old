@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/02/2017 08:16:47 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="HBMs.Cliente" table="cliente" catalog="fitnet" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="bitacora" class="HBMs.Bitacora" fetch="select">
+            <column name="id_bitacora" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <property name="cedula" type="string">
+            <column name="cedula" length="10" not-null="true" />
+        </property>
+        <property name="fnac" type="date">
+            <column name="fnac" length="10" not-null="true">
+                <comment>fecha de nacimiento, se utiliza para calcular la edad</comment>
+            </column>
+        </property>
+        <property name="imagen" type="string">
+            <column name="imagen" length="256" not-null="true" />
+        </property>
+        <property name="correo" type="string">
+            <column name="correo" length="124" />
+        </property>
+        <property name="celular" type="string">
+            <column name="celular" length="10" />
+        </property>
+        <property name="mutualista" type="string">
+            <column name="mutualista" length="45" not-null="true" />
+        </property>
+        <property name="sexo" type="string">
+            <column name="sexo" length="11" not-null="true" />
+        </property>
+        <set name="cobros" table="cobro" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_cliente" not-null="true" />
+            </key>
+            <one-to-many class="HBMs.Cobro" />
+        </set>
+        <set name="marcas" table="marca" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_cliente" not-null="true" />
+            </key>
+            <one-to-many class="HBMs.Marca" />
+        </set>
+    </class>
+</hibernate-mapping>

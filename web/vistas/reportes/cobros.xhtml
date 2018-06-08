@@ -1,0 +1,102 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="./../menu/mainmenu.xhtml">
+    <ui:define name="content">
+        <!-- Data Tables -->
+        <link href="#{facesContext.externalContext.requestContextPath}/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet"/>
+        <link href="#{facesContext.externalContext.requestContextPath}/css/plugins/dataTables/dataTables.responsive.css" rel="stylesheet"/>
+        <link href="#{facesContext.externalContext.requestContextPath}/css/plugins/dataTables/dataTables.tableTools.min.css" rel="stylesheet"/>
+        <h:form id="formulario">    
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Tabla de Reporte de Cobros</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <table>
+                                <tr>
+                                    <td style="padding: 10px"> 
+                                        Estado : 
+                                    </td>
+                                    <td style="padding: 10px">
+                                        <select class="form-control" id="estado">
+                                            <option value="Todos">Todos</option>
+                                            <option value="Activo">Activo</option>
+                                            <option value="Inactivo">Inactivo</option>
+                                            <option value="Cancelado">Cancelado</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="table table-striped table-bordered table-hover " id="editable" >
+                                <thead>
+                                    <tr>
+                                        <th>Foto</th>
+                                        <th>Nombre</th>
+                                        <th>Cedula</th>
+                                        <th>Importe</th>
+                                        <th>Descuento</th>
+                                        <th>Total</th>
+                                        <th>Pago</th>
+                                        <th>Adeuda</th>
+                                        <th>Fecha</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <ui:repeat value="#{reportesCobrosController.cobros}" var="cobro" varStatus="myVarStatus">
+                                        <tr class="gradeX">
+                                            <td style="vertical-align:middle">
+                                                <div style="background-image: url('#{cobro.cliente.imagen}'); background-size: cover; height: 50px; width: 50px; border-radius: 100%; "></div>
+                                            </td>
+                                            <td style="vertical-align:middle">#{cobro.cliente.nombre}</td>
+                                            <td style="vertical-align:middle">#{cobro.cliente.cedula}</td>
+                                            <td style="vertical-align:middle">#{cobro.importeTotal}</td>
+                                            <td style="vertical-align:middle">#{cobro.descuento}</td>
+                                            <td style="vertical-align:middle">#{cobro.importeTotal - cobro.descuento}</td>
+                                            <td style="vertical-align:middle">#{cobro.entrega}</td>
+                                            <td style="vertical-align:middle">#{cobro.debe}</td>
+                                            <td style="vertical-align:middle">#{cobro.bitacora.fecha}</td>
+                                        </tr>
+                                    </ui:repeat>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Foto</th>
+                                        <th>Nombre</th>
+                                        <th>Cedula</th>
+                                        <th>Importe</th>
+                                        <th>Descuento</th>
+                                        <th>Total</th>
+                                        <th>Pago</th>
+                                        <th>Adeuda</th>
+                                        <th>Fecha</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-2.2.4/dt-1.10.13/datatables.min.js"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/js/plugins/dataTables/dataTables.responsive.js"></script>
+        <script src="#{facesContext.externalContext.requestContextPath}/js/plugins/dataTables/dataTables.tableTools.min.js"></script>
+        <script>
+            var table = $('#editable').DataTable();
+        </script>
+    </ui:define>
+</ui:composition>

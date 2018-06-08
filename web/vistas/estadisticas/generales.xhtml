@@ -1,0 +1,363 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="./../menu/mainmenu.xhtml">
+    <ui:define name="content">
+        <!-- Data Tables -->
+        <link href="#{facesContext.externalContext.requestContextPath}/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet"/>
+        <link href="#{facesContext.externalContext.requestContextPath}/css/plugins/dataTables/dataTables.responsive.css" rel="stylesheet"/>
+        <link href="#{facesContext.externalContext.requestContextPath}/css/plugins/dataTables/dataTables.tableTools.min.css" rel="stylesheet"/>
+        <link href="#{facesContext.externalContext.requestContextPath}/css/plugins/datapicker/datepicker3.css" rel="stylesheet"/>
+        <style> td, th { padding: 10px !important;} </style>
+        <h:form id="formulario">    
+            
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Estadisticas Generales</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            
+                            <table>
+                                
+                                <tr>
+                                    <td> Fecha Inicial : </td>
+                                    <td>
+                                        <div id="data_1" style="width: 100%;">
+                                            <div class="input-group date">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><h:inputText class="form-control" value="#{estadisticasGeneralesController.fInicio}" disabled="#{request.getParameter('op') == 'detalle'}"/>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>  
+                                
+                                <tr>
+                                    <td> Fecha Final : </td>
+                                    <td>
+                                        <div id="data_2" style="width: 100%;">
+                                            <div class="input-group date">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><h:inputText class="form-control" value="#{estadisticasGeneralesController.fFin}" disabled="#{request.getParameter('op') == 'detalle'}"/>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>  
+                                
+                            </table>
+                            
+                            <div class="">
+                                <h:commandButton class="btn btn-primary center-block" value="Visualizar" action="#{estadisticasGeneralesController.calcularDatos()}"/>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                        <div class="wrapper wrapper-content animated fadeInRight">
+                            
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-title">
+                                            <h5>Ganancias
+                                            </h5>
+                                            <div class="ibox-tools">
+                                                <a class="collapse-link">
+                                                    <i class="fa fa-chevron-up"></i>
+                                                </a>
+                                                <a class="close-link">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <div class="row">
+                                                <div class="col-lg-4">
+                                                    <div class="widget navy-bg p-lg text-center">
+                                                        <div class="m-b-md">
+                                                            <i class="fa fa-heartbeat fa-4x"></i>
+                                                            <h1 class="m-xs">$#{estadisticasGeneralesController.gananciasActividades}</h1>
+                                                            <h3 class="font-bold no-margins">
+                                                                Actividades
+                                                            </h3>
+                                                            <small>nominal</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="widget  p-lg text-center">
+                                                        <div class="m-b-md">
+                                                            <i class="fa fa-money fa-4x"></i>
+                                                            <h1 class="m-xs">$#{estadisticasGeneralesController.gananciasTotales}</h1>
+                                                            <h3 class="font-bold no-margins">
+                                                                Total
+                                                            </h3>
+                                                            <small>nominal</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                  <div class="col-lg-4">
+                                                    <div class="widget navy-bg p-lg text-center">
+                                                        <div class="m-b-md">
+                                                            <i class="fa fa-shopping-cart fa-4x"></i>
+                                                            <h1 class="m-xs">$#{estadisticasGeneralesController.gananciasArticulos}</h1>
+                                                            <h3 class="font-bold no-margins">
+                                                                Articulos
+                                                            </h3>
+                                                            <small>nominal</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12" style="border-bottom: solid 1px gray;">
+                                                    <div class="widget  p-lg text-center">
+                                                        <div class="m-b-md">
+                                                            <i class="fa fa-minus-square fa-4x"></i>
+                                                            <h1 class="m-xs">$#{estadisticasGeneralesController.totalDeudas}</h1>
+                                                            <h3 class="font-bold no-margins">
+                                                                Deudas
+                                                            </h3>
+                                                            <small></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                 <div class="col-lg-12">
+                                                    <div class="widget  p-lg text-center">
+                                                        <div class="m-b-md">
+                                                            <i class="fa fa-usd fa-4x"></i>
+                                                            <h1 class="m-xs">$#{estadisticasGeneralesController.gananciasLiquidas}</h1>
+                                                            <h3 class="font-bold no-margins">
+                                                                Ganancias
+                                                            </h3>
+                                                            <small>liquido</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-title">
+                                            <h5>Ganancias por Dia.
+                                            </h5>
+                                            <div class="ibox-tools">
+                                                <a class="collapse-link">
+                                                    <i class="fa fa-chevron-up"></i>
+                                                </a>
+                                                <a class="close-link">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <div>
+                                                <canvas id="lineChart2" height="200"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-title">
+                                            <h5>Accesos
+                                            </h5>
+                                            <div class="ibox-tools">
+                                                <a class="collapse-link">
+                                                    <i class="fa fa-chevron-up"></i>
+                                                </a>
+                                                <a class="close-link">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <div class="row">
+                                                 <div class="col-lg-12">
+                                                    <div class="widget  p-lg text-center">
+                                                        <div class="m-b-md">
+                                                            <i class="fa fa-sign-in fa-4x"></i>
+                                                            <h1 class="m-xs">#{estadisticasGeneralesController.cantAccessos}</h1>
+                                                            <h3 class="font-bold no-margins">
+                                                                Accesos
+                                                            </h3>
+                                                            <small>total</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-title">
+                                            <h5>Accesos por Hora.
+                                            </h5>
+                                            <div class="ibox-tools">
+                                                <a class="collapse-link">
+                                                    <i class="fa fa-chevron-up"></i>
+                                                </a>
+                                                <a class="close-link">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <div>
+                                                <canvas id="lineChart" height="200"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-title">
+                                            <h5>Clientes
+                                            </h5>
+                                            <div class="ibox-tools">
+                                                <a class="collapse-link">
+                                                    <i class="fa fa-chevron-up"></i>
+                                                </a>
+                                                <a class="close-link">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <div class="row">
+                                                 <div class="col-lg-12">
+                                                    <div class="widget  p-lg text-center">
+                                                        <div class="m-b-md">
+                                                            <i class="fa fa-user-plus fa-4x"></i>
+                                                            <h1 class="m-xs">#{estadisticasGeneralesController.clientesNuevos}</h1>
+                                                            <h3 class="font-bold no-margins">
+                                                                Clientes
+                                                            </h3>
+                                                            <small>nuevos</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                        <!-- ChartJS-->
+                        <script src="#{facesContext.externalContext.requestContextPath}/js/plugins/chartJs/Chart.min.js"></script>
+                        <script>
+                            var lineData = {
+                                labels: [#{estadisticasGeneralesController.horaDeAccessos}],
+                                datasets: [
+                                    {
+                                        label: "Cobros",
+                                        fillColor: "rgba(26,179,148,0.5)",
+                                        strokeColor: "rgba(26,179,148,0.7)",
+                                        pointColor: "rgba(26,179,148,1)",
+                                        pointStrokeColor: "#fff",
+                                        pointHighlightFill: "#fff",
+                                        pointHighlightStroke: "rgba(26,179,148,1)",
+                                        data: [#{estadisticasGeneralesController.cantidadDeAccessosHora}]
+                                    }
+                                ]
+                            };
+                            
+                            var lineData2 = {
+                                labels: [#{estadisticasGeneralesController.diasDeCobros}],
+                                datasets: [
+                                    {
+                                        label: "Cobros",
+                                        fillColor: "rgba(26,179,148,0.5)",
+                                        strokeColor: "rgba(26,179,148,0.7)",
+                                        pointColor: "rgba(26,179,148,1)",
+                                        pointStrokeColor: "#fff",
+                                        pointHighlightFill: "#fff",
+                                        pointHighlightStroke: "rgba(26,179,148,1)",
+                                        data: [#{estadisticasGeneralesController.cobrosPorDias}]
+                                    }
+                                ]
+                            };
+                            
+                            var lineOptions = {
+                                scaleShowGridLines: true,
+                                scaleGridLineColor: "rgba(0,0,0,.05)",
+                                scaleGridLineWidth: 2,
+                                bezierCurve: true,
+                                bezierCurveTension: 0.4,
+                                pointDot: true,
+                                pointDotRadius: 4,
+                                pointDotStrokeWidth: 1,
+                                pointHitDetectionRadius: 20,
+                                datasetStroke: true,
+                                type: 'line',
+                                datasetStrokeWidth: 2,
+                                datasetFill: true,
+                                responsive: true,
+                                maintainAspectRatio: false
+                            };
+                            var ctx = document.getElementById("lineChart").getContext("2d");
+                            var myNewChart = new Chart(ctx).Line(lineData, lineOptions);
+                            
+                            var ctx2 = document.getElementById("lineChart2").getContext("2d");
+                            var myNewChart2 = new Chart(ctx2).Line(lineData2, lineOptions);
+                        </script>
+
+            
+            <!-- Data Tables -->
+            <script src="#{facesContext.externalContext.requestContextPath}/js/plugins/dataTables/jquery.dataTables.js"></script>
+            <script src="#{facesContext.externalContext.requestContextPath}/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+            <script src="#{facesContext.externalContext.requestContextPath}/js/plugins/dataTables/dataTables.responsive.js"></script>
+            <script src="#{facesContext.externalContext.requestContextPath}/js/plugins/dataTables/dataTables.tableTools.min.js"></script>
+            <script src="#{facesContext.externalContext.requestContextPath}/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+            <script>
+                $('#data_1 .input-group.date').datepicker({
+                    todayBtn: "linked",
+                    keyboardNavigation: false,
+                    forceParse: false,
+                    calendarWeeks: true,
+                    format: 'dd/mm/yyyy',
+                    autoclose: true
+                });
+                $('#data_2 .input-group.date').datepicker({
+                    todayBtn: "linked",
+                    format: 'dd/mm/yyyy',
+                    keyboardNavigation: false,
+                    forceParse: false,
+                    calendarWeeks: true,
+                    autoclose: true
+                });
+            </script>
+        </h:form>
+    </ui:define>
+</ui:composition>

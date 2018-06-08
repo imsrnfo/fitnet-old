@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <title>Fitnet</title>
+        <link rel="icon" href="#{facesContext.externalContext.requestContextPath}/img/icon.png"></link>
+        
+        <link href="#{facesContext.externalContext.requestContextPath}/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="#{facesContext.externalContext.requestContextPath}/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+        
+        <link href="#{facesContext.externalContext.requestContextPath}/css/animate.css" rel="stylesheet"/>
+        <link href="#{facesContext.externalContext.requestContextPath}/css/style.css" rel="stylesheet"/>
+        
+    </h:head>
+    
+    <h:body class="gray-bg">
+        
+        <div class="middle-box text-center loginscreen  animated fadeInDown">
+            <div>
+                <div class="m-b-md">
+                    <img alt="image" style="width:300px" class="m-b-md" src="img/gym-icon.png"/>
+                </div>
+                <h3>Bienvenido a FIT-NET</h3>
+                <p>Diseñada especificamente para administrar gimnasios en todo el país.
+                    <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
+                </p>
+                <p>Inicia sesion o solicita una cuenta.</p>
+                <h:form class="m-t" role="form">
+                    <div class="form-group">
+                        <h:inputText class="form-control" a:placeholder="Usuario" value="#{loginController.usuario.username}" required=""/>
+                    </div>
+                    <div class="form-group">
+                        <h:inputSecret class="form-control" a:placeholder="Contraseña" value="#{loginController.usuario.password}" required=""/>
+                    </div>
+                    <h:commandButton type="submit" class="btn btn-primary block full-width m-b" value="Login" action="#{loginController.validarLogin()}"/>
+                    
+                    <a href="#"><small>Olvidaste tu Contraseña?</small></a>
+                    <p class="text-muted text-center"><small>Inicia en modo Cliente</small></p>
+                    <h:commandButton type="submit" class="btn btn-sm btn-white btn-block" value="Modo Cliente" action="#{loginController.validarLoginModoCliente()}"/>
+                </h:form>
+            </div>
+        </div>
+        
+        <!-- Mainly scripts -->
+        <h:outputScript name="js/jquery-2.1.1.js"/>
+        <h:outputScript name="js/bootstrap.min.js"/>
+        
+    </h:body>
+    
+</html>

@@ -1,0 +1,46 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="./../menu/mainmenu.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define name="content">
+        <style> td, th { padding: 10px !important;} </style>
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5><i class="fa fa-edit"></i> Tabla de Administracion de Concepto</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="ibox-content" style="overflow: auto">   
+                <h:form id="form">
+                    <table>
+                        <tr>
+                            <td> Nombre : </td>
+                            <td>
+                                <h:inputText value="#{configuracionConceptoController.concepto.nombre}" class="form-control" disabled="#{request.getParameter('op') == 'detalle'}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> Descripcion : </td>
+                            <td>
+                                <h:inputText value="#{configuracionConceptoController.concepto.descripcion}" class="form-control" disabled="#{request.getParameter('op') == 'detalle'}"/>
+                            </td>
+                        </tr>
+                                
+                    </table>
+                    <h:commandButton style="float: right; padding: 10px; margin: 5px;" class="btn btn-success" value="Guardar" actionListener="#{configuracionConceptoController.guardar()}" rendered="#{!(request.getParameter('op') == 'detalle')}" />
+                    <h:commandButton style="float: right; padding: 10px; margin: 5px;" class="btn btn-success" value="Cancelar" actionListener="#{configuracionConceptoController.cancelar()}" rendered="#{!(request.getParameter('op') == 'detalle')}"/>
+                </h:form>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>

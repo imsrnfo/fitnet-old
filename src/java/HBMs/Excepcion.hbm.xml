@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 04/04/2017 12:55:59 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="fitnet" name="HBMs.Excepcion" optimistic-lock="version" table="excepcion">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="mensaje" type="string">
+      <column name="mensaje" not-null="true"/>
+    </property>
+    <property name="fecha" type="timestamp">
+      <column length="19" name="fecha" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/05/2017 09:57:26 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="HBMs.Actividad" table="actividad" catalog="fitnet" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="bitacora" class="HBMs.Bitacora" fetch="select">
+            <column name="id_bitacora" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true">
+                <comment>nombre de la actividad</comment>
+            </column>
+        </property>
+        <property name="precio" type="int">
+            <column name="precio" not-null="true">
+                <comment>precio de la actividad</comment>
+            </column>
+        </property>
+        <property name="dias" type="int">
+            <column name="dias" not-null="true">
+                <comment>cantidad de dias que puede ingresar el cliente a determinada actividad</comment>
+            </column>
+        </property>
+        <property name="periodo" type="int">
+            <column name="periodo" not-null="true">
+                <comment>Periodo en dias para que se venza la actividad</comment>
+            </column>
+        </property>
+        <set name="cobros" table="cobro" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_actividad" />
+            </key>
+            <one-to-many class="HBMs.Cobro" />
+        </set>
+    </class>
+</hibernate-mapping>
